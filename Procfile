@@ -1,1 +1,1 @@
-web: build/install/kotlinserver/bin/kotlinserver
+web: java -jar build/libs/chequebook-image-ocr-0.0.1.jar
