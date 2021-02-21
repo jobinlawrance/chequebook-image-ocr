@@ -22,7 +22,6 @@ apply plugin: 'com.github.johnrengelman.shadow'
 
 group 'com.udaancapital'
 version '0.0.1'
-mainClassName = "io.ktor.server.cio.EngineMain"
 
 sourceSets {
     main.kotlin.srcDirs = main.java.srcDirs = ['src']
@@ -32,6 +31,9 @@ sourceSets {
 }
 
 mainClassName = 'com.udaancapital.ApplicationKt'
+task stage {
+    dependsOn installDist
+}
 
 // This task will generate your fat JAR and put it in the ./build/libs/ directory
 shadowJar {
@@ -61,6 +63,7 @@ dependencies {
     implementation "io.ktor:ktor-gson:$ktor_version"
     implementation "io.ktor:ktor-server-sessions:$ktor_version"
     implementation "io.ktor:ktor-server-host-common:$ktor_version"
+    implementation "io.ktor:ktor-server-netty:$ktor_version"
     testImplementation "io.ktor:ktor-server-tests:$ktor_version"
 }
 
@@ -69,9 +72,6 @@ kotlin.experimental.coroutines = 'enable'
 afterEvaluate {
     run.dependsOn(tasks.findByName("appRun"))
 }
-
-task stage(dependsOn: ['build', 'clean'])
-build.mustRunAfter clean
 
 task copyToLib(type: Copy) {
     into "$buildDir/libs"
