@@ -1,0 +1,13 @@
+version: '3.6'
+
+# Services we are going to use when running
+services:
+  app:
+    build: ./
+    container_name: gradle-app
+    volumes:
+      - ./:/chequebook-image-ocr
+    ports:
+      - 23567:23567
+    expose:
+      - 23567

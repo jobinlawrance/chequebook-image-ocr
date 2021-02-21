@@ -21,7 +21,7 @@ fun main(args: Array<String>) {
         }
         routing {
             get("") {
-                call.respond("I'm alive!")
+                call.respond("I'm alive! in docker")
             }
             get("hello") {
                 call.respond(HttpStatusCode.Accepted, "Hello")
