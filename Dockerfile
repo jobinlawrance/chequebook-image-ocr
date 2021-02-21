@@ -4,4 +4,4 @@ RUN apk add --no-cache bash
 
 WORKDIR /chequebook-image-ocr
 
-CMD gradle wrapper && ./gradlew run
+CMD ./gradlew run

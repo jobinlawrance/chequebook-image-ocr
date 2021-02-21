@@ -12,7 +12,7 @@ import io.ktor.server.netty.*
 import io.ktor.sessions.*
 
 fun main(args: Array<String>) {
-    val port = System.getenv("PORT")?.toInt() ?: 23567
+    val port = 23567
     embeddedServer(Netty,port) {
         install(ContentNegotiation) {
             gson {
